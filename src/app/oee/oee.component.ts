@@ -1,8 +1,8 @@
 import { Component, OnInit,NgZone } from '@angular/core';
-import * as Highcharts from 'highcharts'
 declare const $: any;
 declare const window: any;
 import {dynamicSer} from './oeeService.sevice'
+import * as c3 from 'c3';
 
 declare global {
     interface window {
@@ -47,7 +47,7 @@ export class OeeComponent implements OnInit {
         self.oee_graph(pheightt,widhth2)
 
         window.FB=pheightt
-        console.log('phe::',window.FB)
+        //console.log('phe::',window.FB)
         
      }​​​​);
     });
@@ -59,72 +59,90 @@ export class OeeComponent implements OnInit {
 
   oee_graph(heightt,widhth2){
 
-   // console.log('heii::',heightt)
-    Highcharts.chart('container',
-    {
-    chart: {
-        backgroundColor:"white",
-        width:widhth2,
-        height: heightt,
-      type: 'areaspline'
-  },
-  title: {
-      text: 'Average fruit consumption during one week'
-  },
-  
-  legend: {
-      layout: 'vertical',
-      align: 'left',
-      verticalAlign: 'top',
+    var chart = c3.generate({
+        
+               bindto: '#container',
+        data: {
+            columns: [
+                ['data1', 30, 200, 100, 400, 150, 250],
+                ['data2', 130, 100, 140, 200, 150, 50]
+            ],
+            type: 'bar'
+        },
+        bar: {
+            width: {
+                ratio: 0.5 // this makes bar width 50% of length between ticks
+            }
+            // or
+            //width: 100 // this makes bar width 100px
+        }
+    });
     
-      floating: true,
-      borderWidth: 1,
-      backgroundColor:
-          Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF'
-  },
-  xAxis: {
-      categories: [
-          'Monday',
-          'Tuesday',
-          'Wednesday',
-          'Thursday',
-          'Friday',
-          'Saturday',
-          'Sunday'
-      ],
-      plotBands: [{ // visualize the weekend
-          from: 4.5,
-          to: 6.5,
-          color: 'rgba(68, 170, 213, .2)'
-      }]
-  },
-  yAxis: {
-      title: {
-          text: 'Fruit units'
-      }
-  },
-  tooltip: {
-      shared: true,
-      valueSuffix: ' units'
-  },
-  credits: {
-      enabled: false
-  },
-  plotOptions: {
-      areaspline: {
-          fillOpacity: 0.5
-      }
-  },
-  series: [{
-      name: 'John',
-      type:'line',
-      data: [3, 4, 3, 5, 4, 10, 12]
-  }, {
-      name: 'Jane',
-      type:'line',
-      data: [1, 3, 4, 3, 3, 5, 4]
-  }]
-});
+//     Highcharts.chart('container',
+//     {
+//     chart: {
+//         backgroundColor:"white",
+//         width:widhth2,
+//         height: heightt,
+//       type: 'areaspline'
+//   },
+//   title: {
+//       text: 'Average fruit consumption during one week'
+//   },
+  
+//   legend: {
+//       layout: 'vertical',
+//       align: 'left',
+//       verticalAlign: 'top',
+    
+//       floating: true,
+//       borderWidth: 1,
+//       backgroundColor:
+//           Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF'
+//   },
+//   xAxis: {
+//       categories: [
+//           'Monday',
+//           'Tuesday',
+//           'Wednesday',
+//           'Thursday',
+//           'Friday',
+//           'Saturday',
+//           'Sunday'
+//       ],
+//       plotBands: [{ // visualize the weekend
+//           from: 4.5,
+//           to: 6.5,
+//           color: 'rgba(68, 170, 213, .2)'
+//       }]
+//   },
+//   yAxis: {
+//       title: {
+//           text: 'Fruit units'
+//       }
+//   },
+//   tooltip: {
+//       shared: true,
+//       valueSuffix: ' units'
+//   },
+//   credits: {
+//       enabled: false
+//   },
+//   plotOptions: {
+//       areaspline: {
+//           fillOpacity: 0.5
+//       }
+//   },
+//   series: [{
+//       name: 'John',
+//       type:'line',
+//       data: [3, 4, 3, 5, 4, 10, 12]
+//   }, {
+//       name: 'Jane',
+//       type:'line',
+//       data: [1, 3, 4, 3, 3, 5, 4]
+//   }]
+// });
 }
 
 }

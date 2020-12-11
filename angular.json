@@ -27,6 +27,7 @@
               "node_modules/jquery-ui-dist/jquery-ui.min.css",
               "node_modules/gridstack/dist/gridstack.min.css",
               "node_modules/gridstack/dist/gridstack-extra.min.css",
+              "node_modules/c3/c3.min.css",
               "src/styles.css"
             ],
             "scripts": [
@@ -34,7 +35,8 @@
               "./node_modules/jquery-ui-dist/jquery-ui.min.js",
               "./node_modules/lodash/lodash.min.js",
               "./node_modules/gridstack/dist/gridstack.min.js",
-              "./node_modules/gridstack/dist/gridstack.jQueryUI.min.js"
+              "./node_modules/gridstack/dist/gridstack.jQueryUI.min.js",
+              
             ]
           },
           "configurations": {
