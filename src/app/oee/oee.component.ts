@@ -60,14 +60,17 @@ export class OeeComponent implements OnInit {
   oee_graph(heightt,widhth2){
 
     var chart = c3.generate({
-        
+        size: {
+            height: heightt,
+            width: widhth2
+        },
                bindto: '#container',
         data: {
             columns: [
                 ['data1', 30, 200, 100, 400, 150, 250],
                 ['data2', 130, 100, 140, 200, 150, 50]
             ],
-            type: 'bar'
+            type: 'line'
         },
         bar: {
             width: {
